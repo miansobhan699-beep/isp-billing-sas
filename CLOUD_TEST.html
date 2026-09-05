@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Cache-Control" content="no-store"><title>NetFlow Cloud Test — Current Project</title><style>body{font:16px Arial;background:#07101c;color:#eef4fb;padding:30px;line-height:1.5}pre{white-space:pre-wrap;background:#0d1828;border:1px solid #22334d;border-radius:10px;padding:18px} .ok{color:#35e59a}.bad{color:#ff6b78}</style></head>
+<body><h1>NetFlow Cloud Test</h1><p>Tests the exact Supabase project used by Master, Franchise, Sub-Dealer and ISP.</p><pre id="out">Testing...</pre>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
+(async function(){
+ const U='https://ofjwpfjcxhlkeptectmu.supabase.co'; const K='sb_publishable_R_DBsJcXQ8NA3b57q8LPfQ_21dhkIOf'; const out=document.getElementById('out');
+ try{
+  const u=new URL(U); if(u.protocol!=='https:'||!/^[a-z0-9-]+\.supabase\.co$/i.test(u.hostname)) throw Error('Invalid Supabase URL: '+U);
+  if(!window.supabase?.createClient) throw Error('Supabase JS failed to load.');
+  const c=window.supabase.createClient(U,K,{auth:{persistSession:false,autoRefreshToken:false}});
+  const r=await fetch(U+'/auth/v1/settings',{headers:{apikey:K},cache:'no-store'}); if(!r.ok) throw Error('Auth endpoint HTTP '+r.status);
+  const a=await c.rpc('resolve_login_email',{p_username:'admin'});
+  if(a.error) throw Error('resolve_login_email RPC missing/blocked: '+a.error.message);
+  const b=await c.rpc('netflow_resolve_login_email',{p_username:'admin'});
+  if(b.error) throw Error('netflow_resolve_login_email RPC missing/blocked: '+b.error.message);
+  out.innerHTML='<span class="ok">PASS</span>\n\nProject: '+U+'\nAuth endpoint: OK\nISP resolver: OK\nReseller resolver: OK\nadmin ISP email: '+(a.data||'(not found)')+'\nadmin reseller email: '+(b.data||'(not found)')+'\n\nAll four panels are pointed at the same cloud project.';
+ }catch(e){out.innerHTML='<span class="bad">FAIL</span>\n\nProject: '+U+'\nError: '+(e?.message||e);}
+})();
+</script></body></html>
