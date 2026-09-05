@@ -762,6 +762,178 @@ body.nf-dashboard .dash-network-mini b{font-size:15px!important}
   body.nf-dashboard .dash-charts .chartwrap{height:235px!important;min-height:235px!important}
 }
 </style>
+
+<style id="netflow-phone-dashboard-final-fix">
+/* Dashboard mobile fix: behave like the other responsive pages */
+body.nf-dashboard{
+  overflow:auto !important;
+}
+body.nf-dashboard .main{
+  height:auto !important;
+  min-height:100vh !important;
+  overflow:visible !important;
+  margin-left:0 !important;
+  width:100% !important;
+}
+body.nf-dashboard #content{
+  height:auto !important;
+  min-height:0 !important;
+  overflow:visible !important;
+}
+body.nf-dashboard .page{
+  height:auto !important;
+  min-height:0 !important;
+  overflow:visible !important;
+  max-width:none !important;
+}
+
+/* Desktop/tablet */
+body.nf-dashboard .dash-kpi-grid{
+  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  gap:14px !important;
+}
+body.nf-dashboard .dash-kpi{
+  min-height:135px !important;
+  height:auto !important;
+  padding:16px !important;
+}
+body.nf-dashboard .dash-kpi .kpi-icon{
+  width:44px !important;
+  height:44px !important;
+  right:14px !important;
+  top:14px !important;
+  font-size:18px !important;
+}
+body.nf-dashboard .dash-kpi .label{
+  font-size:12px !important;
+  white-space:normal !important;
+  overflow:visible !important;
+}
+body.nf-dashboard .dash-kpi .value{
+  font-size:27px !important;
+  line-height:1.15 !important;
+  margin:10px 0 !important;
+  white-space:normal !important;
+  overflow:visible !important;
+}
+body.nf-dashboard .dash-kpi>div:last-child{
+  font-size:11px !important;
+  white-space:normal !important;
+  overflow:visible !important;
+}
+body.nf-dashboard .dash-charts{
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:14px !important;
+}
+body.nf-dashboard .dash-charts .chartcard{
+  height:330px !important;
+  min-height:330px !important;
+  padding:15px !important;
+}
+body.nf-dashboard .dash-charts .chartwrap{
+  height:255px !important;
+  min-height:255px !important;
+}
+body.nf-dashboard #networkLiveSummary,
+body.nf-dashboard .twocol{
+  display:grid !important;
+}
+
+/* Phone */
+@media(max-width:760px){
+  body.nf-dashboard .page{
+    padding:14px 12px 24px !important;
+  }
+  body.nf-dashboard .title h1{
+    font-size:23px !important;
+  }
+  body.nf-dashboard .dash-kpi-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:12px !important;
+  }
+  body.nf-dashboard .dash-kpi{
+    min-height:145px !important;
+    padding:15px !important;
+    border-radius:13px !important;
+  }
+  body.nf-dashboard .dash-kpi .kpi-icon{
+    width:42px !important;
+    height:42px !important;
+    right:12px !important;
+    top:12px !important;
+    font-size:17px !important;
+  }
+  body.nf-dashboard .dash-kpi .label{
+    font-size:12px !important;
+    line-height:1.3 !important;
+    padding-right:38px !important;
+  }
+  body.nf-dashboard .dash-kpi .value{
+    font-size:25px !important;
+    line-height:1.15 !important;
+    margin:11px 0 8px !important;
+    padding-right:0 !important;
+  }
+  body.nf-dashboard .dash-kpi>div:last-child{
+    font-size:11px !important;
+    line-height:1.3 !important;
+  }
+  body.nf-dashboard .dash-charts{
+    grid-template-columns:1fr !important;
+    gap:14px !important;
+  }
+  body.nf-dashboard .dash-charts .chartcard{
+    width:100% !important;
+    height:300px !important;
+    min-height:300px !important;
+    padding:15px !important;
+  }
+  body.nf-dashboard .dash-charts .chartcard h2{
+    font-size:15px !important;
+    margin-bottom:9px !important;
+  }
+  body.nf-dashboard .dash-charts .chartwrap{
+    height:240px !important;
+    min-height:240px !important;
+    width:100% !important;
+  }
+  body.nf-dashboard .dash-charts .chartwrap canvas{
+    max-height:none !important;
+  }
+  body.nf-dashboard #networkLiveSummary,
+  body.nf-dashboard .twocol{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+  }
+}
+
+/* Very small phones: keep two readable boxes instead of collapsing everything */
+@media(max-width:380px){
+  body.nf-dashboard .dash-kpi-grid{
+    grid-template-columns:1fr 1fr !important;
+    gap:9px !important;
+  }
+  body.nf-dashboard .dash-kpi{
+    min-height:135px !important;
+    padding:12px !important;
+  }
+  body.nf-dashboard .dash-kpi .value{
+    font-size:22px !important;
+  }
+  body.nf-dashboard .dash-kpi .label{
+    font-size:11px !important;
+  }
+  body.nf-dashboard .dash-charts .chartcard{
+    height:285px !important;
+    min-height:285px !important;
+  }
+  body.nf-dashboard .dash-charts .chartwrap{
+    height:225px !important;
+    min-height:225px !important;
+  }
+}
+</style>
+
 </head>
 <body><script>
 (function(){
